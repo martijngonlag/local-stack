@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pulsar
+  namespace: argocd
+spec:
+  destination:
+    namespace: pulsar
+    server: https://kubernetes.default.svc
+  project: pulsar
+  source:
+    path: argocd/manifests/pulsar
+    repoURL: https://github.com/martijngonlag/local-stack.git
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
