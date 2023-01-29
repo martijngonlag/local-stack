@@ -4,7 +4,6 @@ metadata:
     name: proxy
     namespace: pulsar
 spec:
-    brokerAddress: my-broker-headless
     dnsNames: []
     #webSocketServiceEnabled: true
     image: streamnative/pulsar:2.10.2.4
