@@ -1,6 +1,6 @@
 # Local Stack
 
-Local Stack aims to simplify local development and testing on Kubernetes by providing a fast, easy, and repeatable setup process for deploying StreamNative platform and Apache Pulsar. It allows for quick deployment and tear down with a single command, and has modular design for adding additional applications through ArgoCD. 
+Local Stack streamlines the deployment of a multi-node Kubernetes cluster for local dev and testing, and utilizes OLM and ArgoCD to offer a fast, easy, and repeatable process for deploying operators and apps.
 
 ## Table of Contents
 
