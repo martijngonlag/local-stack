@@ -81,8 +81,8 @@ provider "helm" {
 }
 
 resource "helm_release" "argocd" {
+  depends_on = [kubectl_manifest.olm_apply]
   name  = "argocd"
-
   repository       = "https://argoproj.github.io/argo-helm"
   chart            = "argo-cd"
   namespace        = "argocd"
@@ -90,6 +90,10 @@ resource "helm_release" "argocd" {
   create_namespace = true
 }
 
+
 resource "kubectl_manifest" "argo_conf" {
+  depends_on = [
+    kubectl_manifest.olm_apply
+  ]
   yaml_body = "${file("../argocd/application.yaml")}"
 }
