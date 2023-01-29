@@ -8,11 +8,8 @@ Local Stack is a tool that makes it easy to run a Kubernetes cluster locally. It
 2. [Getting Started](#getting-started)
 3. [Prerequisites](#prerequisites)
 4. [Installing](#installing)
-6. [How to](#how to)
-7. [Change into each `terraform/` folder and run `terraform init`, `plan`, and `apply`](#Change into each `terraform/` folder and run `terraform init`, `plan`, and `apply`)
-8. [Modify the version of Pulsar in the deployment](#Modify the version of Pulsar in the deployment)
-9. [Connect to the ArgoCD console](#Connect to the ArgoCD console)
-10. [Cleanup](#Cleanup)
+6. [How to](#how%20to)
+7. [Cleanup](#cleanup)
 
 ## File Structure
 
