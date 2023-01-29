@@ -93,7 +93,8 @@ resource "helm_release" "argocd" {
 
 resource "kubectl_manifest" "argo_conf" {
   depends_on = [
-    kubectl_manifest.olm_apply
+    kubectl_manifest.olm_apply,
+    helm_release.argocd
   ]
   yaml_body = "${file("../argocd/application.yaml")}"
 }
