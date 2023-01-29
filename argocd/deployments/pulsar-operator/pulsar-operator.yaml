@@ -1,13 +1,10 @@
-apiVersion: v1
-appVersion: 0.9.4
-description: Apache Pulsar Operators Helm chart for Kubernetes
-home: https://streamnative.io
-icon: http://pulsar.apache.org/img/pulsar.svg
-kubeVersion: '>= 1.16.0-0 < 1.24.0-0'
-maintainers:
-- email: support@streamnative.io
-  name: StreamNative Support
-name: pulsar-operator
-sources:
-- https://github.com/streamnative/pulsar-operators
-version: 0.10.0
+apiVersion: operators.coreos.com/v1
+kind: Subscription
+metadata:
+  name: pulsar-operator
+  namespace: operators
+spec:
+  channel: stable
+  name: pulsar-operator
+  source: https://github.com/streamnative/pulsar-operators
+  sourceNamespace: olm
