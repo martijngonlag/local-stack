@@ -1,6 +1,6 @@
 # Local Stack
 
-Local Stack is a tool that makes it easy to run a Kubernetes cluster locally. It is designed to handle the StreamNative platform and Pulsar by providing all the necessary components and dependencies in a single, easy-to-use package. This tool enables developers to test and deploy their applications in a simulated environment that is similar to a production environment. The components are provisioned using Terraform and are deployed in a local cluster managed by Kubernetes. The cluster includes components such as the StreamNative platform, Pulsar, and ArgoCD for continuous delivery. By using Local Stack, developers can avoid the complexity of setting up and configuring these services, saving time and ensuring consistency across their work environment.
+Local Stack aims to simplify local development on Kubernetes by providing a fast and easy setup process for deploying StreamNative platform and Apache Pulsar. It allows for quick deployment and tear down with a single command, and has modular design for adding additional applications through ArgoCD. 
 
 ## Table of Contents
 
