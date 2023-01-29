@@ -1,0 +1,27 @@
+apiVersion: zookeeper.streamnative.io/v1alpha1
+kind: ZooKeeperCluster
+metadata:
+  name: my
+  namespace: pulsar
+spec:
+  image: streamnative/pulsar:2.9.3.7
+  replicas: 3
+  pod:
+    resources:
+      requests:
+        cpu: "100m"
+        memory: "256Mi"
+  persistence:
+    reclaimPolicy: Retain
+    data:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: "10Gi"
+    dataLog:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: "20Gi"

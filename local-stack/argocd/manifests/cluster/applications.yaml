@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sn-platform
+  namespace: argocd
+spec:
+  destination:
+    namespace: sn-system
+    server: https://kubernetes.default.svc
+  project: pulsar
+  source:
+    path: argocd/manifests/pulsar
+    repoURL: https://github.com/piomin/sample-terraform-kubernetes-argocd.git
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
