@@ -12,7 +12,7 @@ spec:
   project: default
   source:
     path: argocd/deployments/pulsar-operator
-    repoURL: https://gitlab.com/martijngonlag/local-stack.git
+    repoURL: https://github.com/martijngonlag/local-stack.git
     targetRevision: HEAD
   syncPolicy:
     automated:
