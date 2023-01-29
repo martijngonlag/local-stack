@@ -10,7 +10,7 @@ spec:
   project: pulsar
   source:
     path: argocd/manifests/pulsar
-    repoURL: https://github.com/piomin/sample-terraform-kubernetes-argocd.git
+    repoURL: https://github.com/martijngonlag/local-stack.git
     targetRevision: HEAD
   syncPolicy:
     syncOptions:
