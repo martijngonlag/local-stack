@@ -90,26 +90,6 @@ resource "helm_release" "argocd" {
   create_namespace = true
 }
 
-
 resource "kubectl_manifest" "argo_conf" {
-  yaml_body = <<YAML
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: argo-conf
-  namespace: argocd
-spec:
-  destination:
-    namespace: default
-    server: 'https://kubernetes.default.svc'
-  source:
-    path: argocd/applications
-    repoURL: 'https://github.com/martijngonlag/local-stack.git'
-    targetRevision: HEAD
-  project: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-YAML
+  yaml_body = "${file("../argocd/application.yaml")}"
 }
