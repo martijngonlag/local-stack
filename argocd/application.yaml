@@ -6,7 +6,7 @@ server:
       source:
         repoURL: https://github.com/martijngonlag/local-stack.git
         targetRevision: HEAD
-        path: argocd/manifests/cluster
+        path: argocd/templates
         directory:
           recurse: true
       destination:

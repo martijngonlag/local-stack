@@ -1,14 +1,9 @@
 provider "kind" {
 }
 
-provider "kubernetes" {
-  config_path = pathexpand(var.kind_cluster_config_path)
-}
-
 resource "kind_cluster" "default" {
-  name = var.kind_cluster_name
-  kubeconfig_path = pathexpand(var.kind_cluster_config_path)
-  wait_for_ready = var.wait_for_ready
+  name = "local-stack.dev"
+  wait_for_ready = true
 
   kind_config {
     kind = "Cluster"
