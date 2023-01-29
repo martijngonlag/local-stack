@@ -31,4 +31,3 @@ spec:
         resources:
           requests:
             storage: "16Gi"
-  zkServers: my-zk-headless:2181
