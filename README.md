@@ -31,16 +31,16 @@ Local Stack is a tool that makes it easy to run a Kubernetes cluster locally. It
 ```
 
 1. argocd: This folder contains the configuration files for the ArgoCD deployment.
-  1. applications: This folder contains the application.yaml file that defines the application deployment in ArgoCD.
-  2. deployments: This folder contains the deployment folder which in turn contains the values.yaml file that sets the values for the deployment.
+  1.1 applications: This folder contains the application.yaml file that defines the application deployment in ArgoCD.
+  2.1 deployments: This folder contains the deployment folder which in turn contains the values.yaml file that sets the values for the deployment.
 
 2. olm: This folder contains the configuration files for the Operator Lifecycle Manager (OLM).
-  1. crds.yaml: This file contains the Custom Resource Definitions for the OLM.
-  2. olm.yaml: This file contains the configuration for the OLM deployment.
+  1.1 crds.yaml: This file contains the Custom Resource Definitions for the OLM.
+  2.1 olm.yaml: This file contains the configuration for the OLM deployment.
 
 3. terraform: This folder contains the Terraform configuration files for the deployment.
-  1. main.tf: This is the main Terraform configuration file that includes the provider and module configurations.
-  2. versions.tf: This file sets the version constraints for Terraform modules.
+  1.1 main.tf: This is the main Terraform configuration file that includes the provider and module configurations.
+  2.1 versions.tf: This file sets the version constraints for Terraform modules.
 
 ## Getting Started
 
