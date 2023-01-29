@@ -1,6 +1,6 @@
 # Local Stack
 
-What does this project do? This project is for deploying a kubernetes cluster that can run SN-Platform from StreamNative and Pulsar. It uses Terraform to provision the cluster on your local machine using Minikube.
+Local Stack is a tool that makes it easy to run a Kubernetes cluster locally. It is designed to handle the StreamNative platform and Pulsar by providing all the necessary components and dependencies in a single, easy-to-use package. This tool enables developers to test and deploy their applications in a simulated environment that is similar to a production environment. The components are provisioned using Terraform and are deployed in a local cluster managed by Kubernetes. The cluster includes components such as the StreamNative platform, Pulsar, and ArgoCD for continuous delivery. By using Local Stack, developers can avoid the complexity of setting up and configuring these services, saving time and ensuring consistency across their work environment.
 
 ## Table of Contents
 
@@ -8,54 +8,56 @@ What does this project do? This project is for deploying a kubernetes cluster th
 2. [Getting Started](#getting-started)
 3. [Prerequisites](#prerequisites)
 4. [Installing](#installing)
-6. [Deployment](#deployment)
-7. [Minikube](#minikube)
-8. [Kubernetes](#kubernetes)
-9. [Cleanup](#cleanup)
-10. [Versioning](#versioning)
+6. [How to](#how to)
+7. [Change into each `terraform/` folder and run `terraform init`, `plan`, and `apply`](#Change into each `terraform/` folder and run `terraform init`, `plan`, and `apply`)
+8. [Modify the version of Pulsar in the deployment](#Modify the version of Pulsar in the deployment)
+9. [Connect to the ArgoCD console](#Connect to the ArgoCD console)
+10. [Cleanup](#Cleanup)
 
 ## File Structure
 
-The project is structured into several modules. Each module has its own `main.tf`, `variables.tf`, and `outputs.tf`.
-
-Please note that in order to run the terraform commands, you should cd into each module folder (e.g. 00_Kubernetes) before running the commands.
-
 ```css
 .
-├── 00_Kubernetes
+├── argocd
+│   ├── applications
+│   │   └── application.yaml
+│   └── deployments
+│       └── deployment
+│           └── values.yaml
+├── olm
+│   ├── crds.yaml
+│   └── olm.yaml
+├── terraform
 │   ├── main.tf
-│   ├── variables.tf
-│   └── README.md
-├── 01_StreamNative
-│   ├── main.tf
-│   ├── variables.tf
-│   └── README.md
-├── 02_Pulsar
-│   ├── main.tf
-│   ├── variables.tf
-│   └── README.md
-├── terraform.tfvars
+│   └── versions.tf
 └── README.md
 ```
 
-- `main.tf`: The main Terraform configuration file. It includes the provider configuration and the resources that will be created.
+1. argocd: This folder contains the configuration files for the ArgoCD deployment.
+  1.1 applications: This folder contains the application.yaml file that defines the application deployment in ArgoCD.
+  1.2 deployments: This folder contains the deployment folder which in turn contains the values.yaml file that sets the values for the deployment.
 
-- `variables.tf`: Defines the variables that will be used in the `main.tf` file.
+2. olm: This folder contains the configuration files for the Operator Lifecycle Manager (OLM).
+  2.1 crds.yaml: This file contains the Custom Resource Definitions for the OLM.
+  2.1 olm.yaml: This file contains the configuration for the OLM deployment.
 
-- `terraform.tfvars`: Contains the values for the variables defined in `variables.tf`. This file is ignored by git and should not be checked in.
-
-Please note that you will have to fill out the `terraform.tfvars` file with your desired values. Also, you might need to add other variables in `variables.tf` and `main.tf` as per your requirement.
+3. terraform: This folder contains the Terraform configuration files for the deployment.
+  3.1 main.tf: This is the main Terraform configuration file that includes the provider and module configurations.
+  3.2 versions.tf: This file sets the version constraints for Terraform modules.
 
 ## Getting Started
 
-These instructions get you a working version of Minikube, Kubernetes, SN-Platform and Apache Pulsar up and running on your local machine for development and testing purposes.
+- Ensure that you have all the prerequisites installed on your system (e.g. Terraform, Argo CD, and OLM)
+- Clone the repository and navigate to the `terraform/` folder
+- Run Terraform commands (e.g. `terraform init`, `terraform plan`, and `terraform apply`) to deploy the infrastructure
+- Verify the deployment by accessing the Argo CD and OLM applications
+- (Optional) Use the `argocd/applications/application.yaml` and `argocd/deployments/deployment/values.yaml` files to configure the Argo CD application deployment
+- Clean up the infrastructure using Terraform commands when necessary.
 
 ### Prerequisites
 
-- [Minikube](https://minikube.sigs.k8s.io/docs/) installed on your local machine
 - [Terraform](https://www.terraform.io/) installed on your local machine
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) installed on your local machine
-- Fill in the necessary variables in `terraform.tfvars`
 
 ### Installing
 
@@ -71,20 +73,44 @@ git clone https://github.com/martijngonlag/local-stack.git
 cd local-stack
 ```
 
-3. Change into each module folder and run `terraform init`, `plan`, and `apply`
+3. Change into each `terraform/` folder and run `terraform init`, `plan`, and `apply`
 
-4. Repeat step 3 for each module
+### How to
 
-### Deployment
+#### Modify the version of the operators in the deployment
 
-#### Minikube
+To modify the version of the operators in the deployment, follow these steps, and then re-create the environment
 
-Steps on how to get started with minikube:
+1. Open the file `deployments/sn-platform/pulsar-operator.yaml`
+2. Modify the subscription to reflect the desired operator version (change from `stable`
 
-1. Install Minikube on your local machine. You can find the installation instructions for your operating system [here](https://minikube.sigs.k8s.io/docs/start/).
-2. Start Minikube by running the command minikube start.
-3. Verify that Minikube is running by running the command `minikube status`.
-4. Connect to the Minikube cluster by running the command `minikube kubectl -- get nodes`.
+#### Modify the version of Pulsar in the deployment
+
+To modify the version of Pulsar, follow these steps:
+
+1. Open the respective YAML file in the `deployments/pulsar/` directory for the component you want to modify (bookkeeper, pulsar, pulsar-proxy, or zookeeper).
+2. Modify the desired version of Pulsar in the respective YAML file.
+
+#### Connect to the ArgoCD console
+
+In order to connect to ArgoCD, follow these steps:
+
+1. Run the following command to forward the service port:
+
+```sh
+kubectl port-forward service/argocd-server 8443:443 -n argocd
+```
+
+2. Retrieve the initial admin password using the following command:
+
+```sh
+kubectl get secret argocd-initial-admin-secret -n argocd --template={{.data.password}} | base64 -D
+```
+
+3. Open a web browser and navigate to <https://localhost:8443>
+4. Log in using the default username admin and the password obtained in step 2.
+
+You should now be able to access the ArgoCD web interface.
 
 #### Kubernetes
 
@@ -99,8 +125,4 @@ To deploy the Kubernetes to Minikube cluster using Terraform:
 
 #### Cleanup
 
-Run `terraform destroy --var-file=../terraform.tfvars` in each module directory to delete the resources created by Terraform.
-
-### Versioning
-
-This project uses [SemVer](https://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/martijngonlag/local-stack/tags).
+To clean up everything, you can run `terraform destroy` in the `terraform/` folder. The `terraform destroy` command is used to destroy the resources created by Terraform. It will prompt you to confirm the resources that will be destroyed, and after confirming, it will remove all resources created in the current working directory. Note that this action is irreversible and should be used with caution. Before destroying, ensure that you have saved any important information related to the resources being destroyed, and that you understand the consequences of this action.
