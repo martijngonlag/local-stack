@@ -1,0 +1,18 @@
+apiVersion: pulsar.streamnative.io/v1alpha1
+kind: PulsarBroker
+metadata:
+  name: my
+  namespace: pulsar
+spec:
+  image: streamnative/pulsar:2.9.2.17
+  pod:
+    resources:
+      requests:
+        cpu: 200m
+        memory: 256Mi
+    terminationGracePeriodSeconds: 30
+  config:
+    custom:
+      webSocketServiceEnabled: "true"
+  replicas: 1
+  zkServers: my-zk-headless:2181
