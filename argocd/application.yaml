@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-conf
+  namespace: argocd
+spec:
+  destination:
+    name: in-cluster
+    namespace: default
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: argocd/manifests
+    repoURL: 'https://gitlab.com/martijngonlag/local-stack.git'
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

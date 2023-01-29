@@ -1,0 +1,10 @@
+apiVersion: operators.coreos.com/v1alpha.com
+kind: Subscription
+metadata:
+  name: pulsar-operator
+  namespace: operators
+spec:
+  channel: stable
+  name: pulsar-operator
+  source: operatorhubio-catalog
+  sourceNamespace: olm
