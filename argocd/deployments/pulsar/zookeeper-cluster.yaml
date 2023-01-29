@@ -1,10 +1,10 @@
 apiVersion: zookeeper.streamnative.io/v1alpha1
 kind: ZooKeeperCluster
 metadata:
-  name: my
+  name: zookeeper
   namespace: pulsar
 spec:
-  image: streamnative/pulsar:2.9.3.7
+  image: streamnative/pulsar:2.10.2.4
   replicas: 3
   pod:
     resources:

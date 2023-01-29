@@ -1,10 +1,10 @@
 apiVersion: pulsar.streamnative.io/v1alpha1
 kind: PulsarBroker
 metadata:
-  name: my
+  name: pulsar
   namespace: pulsar
 spec:
-  image: streamnative/pulsar:2.9.2.17
+  image: streamnative/pulsar:2.10.2.4
   pod:
     resources:
       requests:
@@ -14,5 +14,5 @@ spec:
   config:
     custom:
       webSocketServiceEnabled: "true"
-  replicas: 1
+  replicas: 3
   zkServers: my-zk-headless:2181
