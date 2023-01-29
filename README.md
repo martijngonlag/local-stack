@@ -109,17 +109,6 @@ kubectl get secret argocd-initial-admin-secret -n argocd --template={{.data.pass
 
 You should now be able to access the ArgoCD web interface.
 
-#### Kubernetes
-
-To deploy the Kubernetes to Minikube cluster using Terraform:
-
-1. Fill out the variables in the `terraform.tfvars` file with your desired values.
-2. Change directory into `00_Kubernetes` by running the command `cd 00_Kubernetes`
-3. Initialize Terraform by running the command `terraform init`.
-4. Create a Terraform plan by running the command `terraform plan --var-file=../terraform.tfvars`.
-5. Apply the Terraform plan by running the command `terraform apply --var-file=../terraform.tfvars`.
-6. Verify that the kubernetes cluster has been created by running the command `kubectl get nodes`.
-
 #### Cleanup
 
 To clean up everything, you can run `terraform destroy` in the `terraform/` folder. The `terraform destroy` command is used to destroy the resources created by Terraform. It will prompt you to confirm the resources that will be destroyed, and after confirming, it will remove all resources created in the current working directory. Note that this action is irreversible and should be used with caution. Before destroying, ensure that you have saved any important information related to the resources being destroyed, and that you understand the consequences of this action.
