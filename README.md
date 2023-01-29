@@ -9,6 +9,10 @@ Local Stack aims to simplify local development and testing on Kubernetes by prov
 3. [Prerequisites](#prerequisites)
 4. [Installing](#installing)
 6. [How-to](#how-to)
+   - Fork the local-stack repository
+   - Connect to the ArgoCD console
+   - Modify the version of the operators in the deployment
+   - Create additional applications/deployments
 7. [Cleanup](#cleanup)
 
 ## File Structure
@@ -74,6 +78,24 @@ cd local-stack
 
 ### How-to
 
+#### Fork the local-stack repository
+
+In order to utilize ArgoCD (e.g. auto-deploy changes commited to a repository), you need to fork local-stack.
+
+1. Navigate to [martijngonlag/local-stack](https://github.com/martijngonlag/local-stack)
+2. In the top-right corner of the page, click **Fork**
+3. Select an owner for the forked repository
+4. Optional: Change the name of the fork to distinguish it
+5. Optional: Add a description of the fork
+6. Choose whether to copy only the default or all branches to your fork
+7. Click **Create fork**
+8. Clone the forked repository `git clone https://github.com/YOUR-USERNAME/YOUR-FORKED-REPO-NAME`
+
+Once you've cloned the forked repository, make sure to update the `repoURL` field to the forked repository URL, which can be found in the following files:
+
+- `argocd/application.yaml`
+- `argocd/applications/pulsar.yaml` & `argocd/applications/sn-platform.yaml`
+
 #### Connect to the ArgoCD console
 
 In order to connect to ArgoCD, follow these steps:
@@ -94,24 +116,6 @@ kubectl get secret argocd-initial-admin-secret -n argocd --template={{.data.pass
 4. Log in using the default username admin and the password obtained in step 2.
 
 You should now be able to access the ArgoCD web interface.
-
-#### Fork the local-stack repository
-
-In order to utilize ArgoCD (e.g. auto-deploy changes commited to a repository), you need to fork local-stack.
-
-1. Navigate to [martijngonlag/local-stack](https://github.com/martijngonlag/local-stack)
-2. In the top-right corner of the page, click **Fork**
-3. Select an owner for the forked repository
-4. Optional: Change the name of the fork to distinguish it
-5. Optional: Add a description of the fork
-6. Choose whether to copy only the default or all branches to your fork
-7. Click **Create fork**
-8. Clone the forked repository `git clone https://github.com/YOUR-USERNAME/YOUR-FORKED-REPO-NAME`
-
-Once you've cloned the forked repository, make sure to update the `repoURL` field to the forked repository URL, which can be found in the following files:
-
-- `argocd/application.yaml`
-- `argocd/applications/pulsar.yaml` & `argocd/applications/sn-platform.yaml`
 
 #### Modify the version of the operators in the deployment
 
