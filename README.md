@@ -95,23 +95,41 @@ kubectl get secret argocd-initial-admin-secret -n argocd --template={{.data.pass
 
 You should now be able to access the ArgoCD web interface.
 
+#### Fork the local-stack repository
+
+In order to utilize ArgoCD (e.g. auto-deploy changes commited to a repository), you need to fork local-stack.
+
+1. Navigate to [martijngonlag/local-stack](https://github.com/martijngonlag/local-stack)
+2. In the top-right corner of the page, click **Fork**
+3. Select an owner for the forked repository
+4. Optional: Change the name of the fork to distinguish it
+5. Optional: Add a description of the fork
+6. Choose whether to copy only the default or all branches to your fork
+7. Click **Create fork**
+8. Clone the forked repository `git clone https://github.com/YOUR-USERNAME/YOUR-FORKED-REPO-NAME`
+
+Once you've cloned the forked repository, make sure to update the `repoURL` field to the forked repository URL, which can be found in the following files:
+
+- `argocd/application.yaml`
+- `argocd/applications/pulsar.yaml` & `argocd/applications/sn-platform.yaml`
+
 #### Modify the version of the operators in the deployment
 
-To modify the version of the operators in the deployment, follow these steps, and then re-create the environment. If you have cloned this repository, simply commit the changes to your repository and ArgoCD should automatically pick them up. 
+To modify the version of the operators in the deployment, follow these steps, and then re-create the environment. If you have forked this repository, simply commit the changes to your forked repository and ArgoCD should automatically pick them up. 
 
 1. Open the file `deployments/sn-platform/pulsar-operator.yaml`
-2. Modify the subscription to reflect the desired operator version (change from `stable`
+2. Modify the subscription to reflect the desired operator version (change from `stable`)
 
 #### Modify the version of Pulsar in the deployment
 
-To modify the version of Pulsar, follow these steps, and then re-create the environment. If you have cloned this repository, simply commit the changes to your repository and ArgoCD should automatically pick them up. 
+To modify the version of Pulsar, follow these steps, and then re-create the environment. If you have forked this repository, simply commit the changes to your forked repository and ArgoCD should automatically pick them up. 
 
 1. Open the respective YAML file in the `deployments/pulsar/` directory for the component you want to modify (bookkeeper, pulsar, pulsar-proxy, or zookeeper).
 2. Modify the desired version of Pulsar in the respective YAML file.
 
 #### Create additional applications/deployments
 
-By default, Local Stack deploys the StreamNative Operators and Apache Pulsar. However, the project can easily be adapted to deploy other services. Note that these steps assume you've cloned the Local Stack repository in order for ArgoCD to pick up 
+By default, Local Stack deploys the StreamNative Operators and Apache Pulsar. However, the project can easily be adapted to deploy other services. Note that these steps assume you've forked the Local Stack repository. 
 
 1. Create a copy of `argocd/applications/pulsar.yaml` and name it after your application (e.g. `nginx.yaml`), then open it in your favorite text editor and modify the following fields:
    - Under `metadata` edit the `name` field to your application
