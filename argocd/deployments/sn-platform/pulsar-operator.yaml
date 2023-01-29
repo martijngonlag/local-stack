@@ -30,6 +30,15 @@ spec:
   name: zookeeper-operator
   source: operatorhubio-catalog
   sourceNamespace: olm
-
-
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: function-mesh
+  namespace: operators
+spec:
+  channel: alpha
+  name: function-mesh
+  source: operatorhubio-catalog
+  sourceNamespace: olm
 
