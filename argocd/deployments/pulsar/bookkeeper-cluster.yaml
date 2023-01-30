@@ -21,7 +21,7 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: "8Gi"
+            storage: "4Gi"
     ledger:
       numDirsPerVolume: 1
       numVolumes: 1
@@ -30,5 +30,5 @@ spec:
         - ReadWriteOnce
         resources:
           requests:
-            storage: "16Gi"
+            storage: "8Gi"
   zkServers: zookeeper-zk-headless:2181
