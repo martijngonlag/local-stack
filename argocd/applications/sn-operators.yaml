@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: sn-platform
+  name: sn-operators
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: argocd
+    namespace: operators
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: argocd/deployments/sn-platform
+    path: argocd/deployments/sn-operators
     repoURL: https://github.com/martijngonlag/local-stack.git
     targetRevision: HEAD
   syncPolicy:

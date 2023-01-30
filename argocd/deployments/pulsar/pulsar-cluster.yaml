@@ -15,3 +15,4 @@ spec:
     custom:
       webSocketServiceEnabled: "true"
   replicas: 3
+  zkServers: zookeeper-zk-headless:2181

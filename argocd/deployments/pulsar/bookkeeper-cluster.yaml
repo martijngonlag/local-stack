@@ -31,3 +31,4 @@ spec:
         resources:
           requests:
             storage: "16Gi"
+  zkServers: zookeeper-zk-headless:2181
