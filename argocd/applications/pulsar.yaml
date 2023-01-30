@@ -13,7 +13,7 @@ spec:
   source:
     path: argocd/deployments/pulsar
     repoURL: https://github.com/yuweisung/local-stack.git
-    targetRevision: HEAD
+    targetRevision: review1
   syncPolicy:
     automated:
       prune: true
