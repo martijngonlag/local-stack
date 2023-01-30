@@ -18,10 +18,10 @@ spec:
       - ReadWriteOnce
       resources:
         requests:
-          storage: "5Gi"
+          storage: "10Gi"
     dataLog:
       accessModes:
       - ReadWriteOnce
       resources:
         requests:
-          storage: "10Gi"
+          storage: "20Gi"
