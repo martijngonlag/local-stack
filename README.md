@@ -8,12 +8,12 @@ Local Stack streamlines the deployment of a multi-node Kubernetes cluster for lo
 2. [Getting Started](#getting-started)
 3. [Prerequisites](#prerequisites)
 4. [Installing](#installing)
-6. [How-to](#how-to)
+5. [How-to](#how-to)
    - Fork the local-stack repository
    - Connect to the ArgoCD console
    - Modify the version of the operators in the deployment
    - Create additional applications/deployments
-7. [Cleanup](#cleanup)
+6. [Cleanup](#cleanup)
 
 ## File Structure
 

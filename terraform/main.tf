@@ -29,7 +29,7 @@ resource "kind_cluster" "default" {
     node {
       role = "worker"
       image = "kindest/node:v1.23.13"
-    }
+    }f
 
     node {
       role = "worker"
