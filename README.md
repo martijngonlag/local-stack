@@ -57,6 +57,7 @@ Local Stack streamlines the deployment of a multi-node Kubernetes cluster for lo
 
 ### Prerequisites
 
+- [Docker](https://docs.docker.com/desktop/install/mac-install/) installed on your local machine
 - [Terraform](https://www.terraform.io/) installed on your local machine
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) installed on your local machine
 
