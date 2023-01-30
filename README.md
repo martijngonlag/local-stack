@@ -48,11 +48,11 @@ Local Stack streamlines the deployment of a multi-node Kubernetes cluster for lo
 
 ## Getting Started
 
-- Ensure that you have all the prerequisites installed on your system (e.g. Terraform, Argo CD, and OLM)
+- Ensure that you have all the prerequisites installed on your system
 - Clone the repository and navigate to the `terraform/` folder
 - Run Terraform commands (e.g. `terraform init`, `terraform plan`, and `terraform apply`) to deploy the infrastructure
 - Verify the deployment by accessing the Argo CD and OLM applications
-- (Optional) Use the `argocd/applications/application.yaml` and `argocd/deployments/deployment/values.yaml` files to configure the Argo CD application deployment
+- Use the `argocd/applications/application.yaml` and `argocd/deployments/deployment/values.yaml` files to configure the Argo CD application deployment
 - Clean up the infrastructure using Terraform commands when necessary.
 
 ### Prerequisites
@@ -76,6 +76,14 @@ cd local-stack
 ```
 
 3. Change into the `terraform/` folder and run `terraform init`, `plan`, and `apply`
+
+If no changes were made to the repository, then the default setup will deploy a total of 25 resources. They are deployed in the following order:
+
+1. Multi-node Kubernetes cluster
+2. OLM
+3. ArgoCD
+4. StreamNative Operators
+5. Pulsar
 
 ### How-to
 
