@@ -9,7 +9,7 @@ spec:
     server: 'https://kubernetes.default.svc'
   source:
     path: argocd/applications
-    repoURL: 'https://github.com/martijngonlag/local-stack.git'
+    repoURL: 'https://github.com/yuweisung/local-stack.git'
     targetRevision: HEAD
   project: default
   syncPolicy:
