@@ -61,6 +61,12 @@ Local Stack streamlines the deployment of a multi-node Kubernetes cluster for lo
 - [Terraform](https://www.terraform.io/) installed on your local machine
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) installed on your local machine
 
+*Recommended resources on Docker*
+- 6 CPUs
+- 24GB memory
+- 1GB Swap
+- Limit disk to 64GB
+
 ### Installing
 
 1. Clone the repository
