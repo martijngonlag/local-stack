@@ -4,13 +4,16 @@ metadata:
   name: pulsar
   namespace: pulsar
 spec:
-  image: streamnative/pulsar:2.10.2.4
+  image: streamnative/pulsar:2.10.3.3-fips
   pod:
     resources:
       requests:
         cpu: 200m
         memory: 256Mi
     terminationGracePeriodSeconds: 30
+  env:
+    - name: PULSAR_EXTRA_OPTS
+      value: "-Dpulsar.allocator.exit_on_oom=true -Dio.netty.recycler.maxCapacityPerThread=4096"
   config:
     custom:
       webSocketServiceEnabled: "true"
