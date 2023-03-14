@@ -11,14 +11,13 @@ spec:
         cpu: 200m
         memory: 256Mi
     terminationGracePeriodSeconds: 30
-  jvmOptions:
-    extraOptions:
-    -  -Dpulsar.allocator.exit_on_oom=true
-    -  -Dio.netty.recycler.maxCapacityPerThread=4096
     PULSAR_LOG_LEVEL: "debug"
     PULSAR_LOG_ROOT_LEVEL: "debug"
   config:
+    webSocketServiceEnabled: true
     custom:
-      webSocketServiceEnabled: "true"
+      PULSAR_EXTRA_OPTS: |
+        -Dpulsar.allocator.exit_on_oom=true
+        -Dio.netty.recycler.maxCapacityPerThread=4096
   replicas: 3
   zkServers: zookeeper-zk-headless:2181
