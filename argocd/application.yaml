@@ -10,7 +10,7 @@ spec:
   source:
     path: argocd/applications
     repoURL: 'https://github.com/martijngonlag/local-stack.git'
-    targetRevision: HEAD
+    targetRevision: martijn/extra_opts_test
   project: default
   syncPolicy:
     automated:

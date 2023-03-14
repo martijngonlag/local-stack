@@ -13,7 +13,7 @@ spec:
   source:
     path: argocd/deployments/sn-operators
     repoURL: https://github.com/martijngonlag/local-stack.git
-    targetRevision: HEAD
+    targetRevision: martijn/extra_opts_test
   syncPolicy:
     automated:
       prune: true
