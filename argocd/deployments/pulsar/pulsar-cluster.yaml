@@ -4,7 +4,7 @@ metadata:
   name: pulsar
   namespace: pulsar
 spec:
-  image: streamnative/pulsar:2.10.3.3-fips
+  image: streamnative/pulsar:2.10.3.3
   pod:
     resources:
       requests:
