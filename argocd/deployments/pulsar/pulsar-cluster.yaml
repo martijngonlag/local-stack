@@ -12,7 +12,9 @@ spec:
         memory: 256Mi
     terminationGracePeriodSeconds: 30
   configData:
-    PULSAR_EXTRA_OPTS: "-Dpulsar.allocator.exit_on_oom=true -Dio.netty.recycler.maxCapacityPerThread=4096"
+    PULSAR_EXTRA_OPTS: |
+      -Dpulsar.allocator.exit_on_oom=true
+      -Dio.netty.recycler.maxCapacityPerThread=4096
     PULSAR_LOG_LEVEL: "debug"
     PULSAR_LOG_ROOT_LEVEL: "debug"
   config:
