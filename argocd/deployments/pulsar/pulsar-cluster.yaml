@@ -11,11 +11,11 @@ spec:
         cpu: 200m
         memory: 256Mi
     terminationGracePeriodSeconds: 30
-    PULSAR_LOG_LEVEL: "debug"
-    PULSAR_LOG_ROOT_LEVEL: "debug"
   config:
     webSocketServiceEnabled: true
     custom:
+      PULSAR_LOG_LEVEL: "debug"
+      PULSAR_LOG_ROOT_LEVEL: "debug"
       PULSAR_EXTRA_OPTS: |
         -Dpulsar.allocator.exit_on_oom=true
         -Dio.netty.recycler.maxCapacityPerThread=4096
